@@ -1,0 +1,100 @@
+@startuml
+
+class RandomArray {
+    -int[] a
+
+    +get()
+}
+
+interface Sorter {
+    +load()
+    +sort()
+    +getPlan()
+}
+
+class QuickSorter {
+    -int[] a
+    -String plan
+
+    +load()
+    -swap()
+    +sort()
+    -partition()
+    -sort(int l, int r)
+    +getPlan()
+}
+
+class SelectSorter {
+    -int[] a
+    -String plan
+
+    -swap()
+    +load()
+    +sort()
+    +getPlan()
+}
+
+interface Linable {
+    +setPosition()
+    +getPosition()
+    +swapPosition()
+    +getValue()
+}
+
+class Monster {
+    -int index
+    -int r
+    -int g
+    -int b
+    -Position position
+
+    +setPosition()
+    +getPosition()
+    +swapPosition()
+    +getValue()
+    +toString()
+}
+
+class Line {
+    -Position[] position
+
+    +put()
+    +get()
+    +toString()
+    +toArray()
+}
+
+class Position {
+    -Linable Linable
+
+    +setLinable()
+}
+
+class Snake {
+    -Sorter sorter
+
+    +setSorter()
+    +lineUp()
+    -parsePlan()
+    -execute()
+}
+
+Sorter <|-- QuickSorter
+
+Sorter <|-- SelectSorter
+
+Linable <|-- Monster
+
+Line *-- Position
+
+Position o-- Linable
+
+Monster o-- Position
+
+Snake o-- Sorter
+
+Snake ..> Line
+
+Line ..> RandomArray
+
+@enduml

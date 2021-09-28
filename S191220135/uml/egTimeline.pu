@@ -1,0 +1,16 @@
+@startuml
+
+queue 七个葫芦娃 as gourds
+actor 老头 as geezer
+entity 记录 as log
+
+gourds -> gourds 
+note left : 随机站成一排
+
+geezer -> geezer 
+note right : 掌握冒泡排序
+
+geezer -> gourds ++ : 指挥站队 
+geezer -> log ++ : 生成log
+
+@enduml
